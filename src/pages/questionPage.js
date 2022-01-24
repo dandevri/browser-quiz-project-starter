@@ -23,6 +23,20 @@ export const initQuestionPage = (userInterface) => {
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .addEventListener('click', nextQuestion);
+
+  document
+    .getElementById(ANSWERS_LIST_ID)
+    .addEventListener("click",(e)=> {
+      const answer = e.target.id;
+      if(answer === currentQuestion.correct){
+        console.log("success")
+      }
+      else{
+        console.log("fail")
+      };
+       currentQuestion.selected = answer;
+    });
+    
 };
 
 const nextQuestion = () => {
