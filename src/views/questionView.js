@@ -2,6 +2,7 @@
 
 import { ANSWERS_LIST_ID } from '../constants.js';
 import { NEXT_QUESTION_BUTTON_ID } from '../constants.js';
+import { SHOW_CORRECT_ANSWER_BUTTON_ID } from '../constants.js';
 
 /**
  * Create a full question element
@@ -16,9 +17,10 @@ export const getQuestionElement = (question) => {
 
     <ul id="${ANSWERS_LIST_ID}"></ul>
 
-    <button id="${NEXT_QUESTION_BUTTON_ID}">
+    <button id="${NEXT_QUESTION_BUTTON_ID}" class="btn">
       Next question
     </button>
+    <button id="${SHOW_CORRECT_ANSWER_BUTTON_ID}" class="btn">Show answer</button>
   `;
 
   return element;
