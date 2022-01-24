@@ -6,6 +6,12 @@
   text-align: center;
 }
 
+.centered div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .scrollable {
   height: auto;
   max-height: 80vh;
@@ -14,4 +20,21 @@
 
 ul {
   list-style: none;
+  margin: 2rem 0 4rem 0;
+}
+
+ul > li {
+  text-align: left;
+}
+
+.correct {
+  background-color: green;
+  color: white;
+}
+
+.btn {
+  display: block;
+  margin: 0.3rem auto;
+  padding: 6px 16px
+  
 }
