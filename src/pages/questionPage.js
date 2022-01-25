@@ -51,6 +51,17 @@ export const initQuestionPage = (userInterface) => {
   document
     .getElementById(SHOW_CORRECT_ANSWER_BUTTON_ID)
     .addEventListener('click', showCorrectAnswer);
+
+  document.getElementById(ANSWERS_LIST_ID).addEventListener('click', (e) => {
+    const answer = e.target.id;
+    if (answer === currentQuestion.correct) {
+      e.target.style.backgroundColor = '#2fe82f';
+    } else {
+      e.target.style.backgroundColor = 'red';
+      document.getElementById(currentQuestion.correct).style.backgroundColor =
+        '#2fe82f';
+    }
+  });
 };
 
 const nextQuestion = () => {
