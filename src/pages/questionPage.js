@@ -62,6 +62,7 @@ export const initQuestionPage = (userInterface) => {
         '#2fe82f';
     }
   });
+
 };
 
 const nextQuestion = () => {
