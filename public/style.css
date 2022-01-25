@@ -23,9 +23,6 @@ ul {
   margin: 2rem 0 4rem 0;
 }
 
-ul > li {
-  text-align: left;
-}
 
 .correct {
   background-color: green;
@@ -35,6 +32,18 @@ ul > li {
 .btn {
   display: block;
   margin: 0.3rem auto;
-  padding: 6px 16px
-  
+  padding: 6px 16px;
+  display: grid;
+  gap: 20px;
+}
+
+li {
+  border: 1px solid;
+  padding: 6px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+li:hover {
+  cursor: pointer;
+  color: #3990bb;
 }
