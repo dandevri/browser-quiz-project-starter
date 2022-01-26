@@ -5,8 +5,10 @@ import { NEXT_QUESTION_BUTTON_ID } from '../constants.js';
 import { SHOW_CORRECT_ANSWER_BUTTON_ID } from '../constants.js';
 import { getQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
-import { quizData } from '../data.js';
+import { quizData, givenAnswers } from '../data.js';
 import { router } from '../router.js';
+
+let totalScore = 0;
 
 export const initQuestionPage = (userInterface) => {
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
@@ -42,7 +44,7 @@ export const initQuestionPage = (userInterface) => {
       `li:nth-child(${answerNumber})`
     );
     correctAnswer.classList.add('correct');
-    answersListElement.style.pointerEvents = 'none'; 
+    answersListElement.style.pointerEvents = 'none';
   };
 
   document
@@ -55,7 +57,9 @@ export const initQuestionPage = (userInterface) => {
 
   document.getElementById(ANSWERS_LIST_ID).addEventListener('click', (e) => {
     const answer = e.target.id;
+    givenAnswers[quizData.currentQuestionIndex] = answer;
     if (answer === currentQuestion.correct) {
+      totalScore++;
       e.target.style.backgroundColor = '#2fe82f';
     } else {
       e.target.style.backgroundColor = 'red';
@@ -68,6 +72,8 @@ export const initQuestionPage = (userInterface) => {
 
 const nextQuestion = () => {
   quizData.currentQuestionIndex++;
-
-  router('question');
+  if (quizData.currentQuestionIndex === quizData.questions.length) {
+    router('result', totalScore);
+  }
+  else router('question');
 };

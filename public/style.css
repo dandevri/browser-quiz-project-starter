@@ -51,3 +51,10 @@ li:hover {
   cursor: pointer;
   color: #3990bb;
 }
+
+.grid > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 30px;
+
+}
