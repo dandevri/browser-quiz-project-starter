@@ -20,7 +20,7 @@ export const getQuestionElement = (question) => {
     <button id="${NEXT_QUESTION_BUTTON_ID}" class="btn">
       Next question
     </button>
-    <button id="${SHOW_CORRECT_ANSWER_BUTTON_ID}" class="btn">Show answer</button>
+    <button id="${SHOW_CORRECT_ANSWER_BUTTON_ID}" class="btn">Show the answer</button>
   `;
 
   return element;

@@ -1,3 +1,9 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .centered {
   position: fixed;
   top: 50%;
@@ -23,7 +29,6 @@ ul {
   margin: 2rem 0 4rem 0;
 }
 
-
 .correct {
   background-color: green;
   color: white;
@@ -33,8 +38,7 @@ ul {
   display: block;
   margin: 0.3rem auto;
   padding: 6px 16px;
-  display: grid;
-  gap: 20px;
+  min-width: 10rem;
 }
 
 li {
