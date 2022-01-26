@@ -55,14 +55,12 @@ export const initQuestionPage = (userInterface) => {
 
   document.getElementById(ANSWERS_LIST_ID).addEventListener('click', (e) => {
     const answer = e.target.id;
-    console.log(answer);
     if (answer === currentQuestion.correct) {
       e.target.style.backgroundColor = '#2fe82f';
     } else {
       e.target.style.backgroundColor = 'red';
       document.getElementById(currentQuestion.correct).style.backgroundColor =
         '#2fe82f';
-    
     }
   });
 
