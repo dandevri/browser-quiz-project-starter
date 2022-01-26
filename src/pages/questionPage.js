@@ -55,19 +55,23 @@ export const initQuestionPage = (userInterface) => {
     .getElementById(SHOW_CORRECT_ANSWER_BUTTON_ID)
     .addEventListener('click', showCorrectAnswer);
 
-  document.getElementById(ANSWERS_LIST_ID).addEventListener('click', (e) => {
-    const answer = e.target.id;
-    givenAnswers[quizData.currentQuestionIndex] = answer;
-    if (answer === currentQuestion.correct) {
-      totalScore++;
-      e.target.style.backgroundColor = '#2fe82f';
-    } else {
-      e.target.style.backgroundColor = 'red';
-      document.getElementById(currentQuestion.correct).style.backgroundColor =
-        '#2fe82f';
-    }
-  });
+  document.getElementById(ANSWERS_LIST_ID).addEventListener('click', showAnswers());
 
+
+  function showAnswers() {
+    return (e) => {
+      const answer = e.target.id;
+      givenAnswers[quizData.currentQuestionIndex] = answer;
+      if (answer === currentQuestion.correct) {
+        totalScore++;
+        e.target.style.backgroundColor = '#2fe82f';
+      } else {
+        e.target.style.backgroundColor = 'red';
+        document.getElementById(currentQuestion.correct).style.backgroundColor =
+          '#2fe82f';
+      }
+    };
+  }
 };
 
 const nextQuestion = () => {
