@@ -49,22 +49,22 @@ export const initQuestionPage = (userInterface) => {
 
     const correctAnswer = answersListElement.querySelector(
       `li:nth-child(${answerNumber})`
-    );
+      );
     correctAnswer.classList.add('correct');
     answersListElement.style.pointerEvents = 'none';
   };
 
-  function showAnswers() {
-    return (e) => {
+  
+  function selectAnswer (e) {
       const answer = e.target.id;
       givenAnswers[quizData.currentQuestionIndex] = answer;
       if (answer === currentQuestion.correct) {
         totalScore++;
         e.target.style.backgroundColor = '#2fe82f';
+        answersListElement.style.pointerEvents = 'none';
       } else {
         e.target.style.backgroundColor = 'red';
-        document.getElementById(currentQuestion.correct).style.backgroundColor =
-          '#2fe82f';
+        answersListElement.style.pointerEvents = 'none';
       }
       const currentScore = createScoreElement(
         totalScore,
@@ -72,7 +72,7 @@ export const initQuestionPage = (userInterface) => {
       );
       userInterface.appendChild(currentScore);
     };
-  }
+  
 
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
@@ -82,11 +82,12 @@ export const initQuestionPage = (userInterface) => {
     .getElementById(SHOW_CORRECT_ANSWER_BUTTON_ID)
     .addEventListener('click', showCorrectAnswer);
 
+
+  
   document
     .getElementById(ANSWERS_LIST_ID)
-    .addEventListener('click', showAnswers);
+    .addEventListener('click', selectAnswer);
 };
-
 const nextQuestion = () => {
   quizData.currentQuestionIndex++;
   if (quizData.currentQuestionIndex === quizData.questions.length) {
