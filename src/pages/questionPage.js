@@ -6,10 +6,19 @@ import { SHOW_CORRECT_ANSWER_BUTTON_ID } from '../constants.js';
 import { TIMER_ID } from '../constants.js';
 import { getQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
-import { quizData } from '../data.js';
+import { createScoreElement } from '../views/scoreView.js';
+import { quizData, givenAnswers } from '../data.js';
 import { router } from '../router.js';
 
+let totalScore = 0;
+
 export const initQuestionPage = (userInterface) => {
+  const currentScore = createScoreElement(
+    totalScore,
+    quizData.questions.length
+  );
+  userInterface.appendChild(currentScore);
+
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
 
   const questionElement = getQuestionElement(currentQuestion.text);
@@ -45,6 +54,26 @@ export const initQuestionPage = (userInterface) => {
     answersListElement.style.pointerEvents = 'none';
   };
 
+  function showAnswers() {
+    return (e) => {
+      const answer = e.target.id;
+      givenAnswers[quizData.currentQuestionIndex] = answer;
+      if (answer === currentQuestion.correct) {
+        totalScore++;
+        e.target.style.backgroundColor = '#2fe82f';
+      } else {
+        e.target.style.backgroundColor = 'red';
+        document.getElementById(currentQuestion.correct).style.backgroundColor =
+          '#2fe82f';
+      }
+      const currentScore = createScoreElement(
+        totalScore,
+        quizData.questions.length
+      );
+      userInterface.appendChild(currentScore);
+    };
+  }
+
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .addEventListener('click', nextQuestion);
@@ -53,36 +82,16 @@ export const initQuestionPage = (userInterface) => {
     .getElementById(SHOW_CORRECT_ANSWER_BUTTON_ID)
     .addEventListener('click', showCorrectAnswer);
 
-  document.getElementById(ANSWERS_LIST_ID).addEventListener('click', (e) => {
-    const answer = e.target.id;
-    if (answer === currentQuestion.correct) {
-      e.target.style.backgroundColor = '#2fe82f';
-    } else {
-      e.target.style.backgroundColor = 'red';
-      document.getElementById(currentQuestion.correct).style.backgroundColor =
-        '#2fe82f';
-    }
-  });
-
- 
-  clock();
-};
-
-const clock = () => {
-  const timer = document.getElementById(TIMER_ID);
-  let timeLeft = 100;
-  const countDown = () => {
-    timeLeft--;
-    timer.textContent = timeLeft;
-    // if (timeLeft === 0) {
-    //   gameOver();
-    // }
-  };
-  setInterval(countDown, 1000);
+  document
+    .getElementById(ANSWERS_LIST_ID)
+    .addEventListener('click', showAnswers);
 };
 
 const nextQuestion = () => {
   quizData.currentQuestionIndex++;
-
-  router('question');
+  if (quizData.currentQuestionIndex === quizData.questions.length) {
+    router('result', totalScore);
+  } else router('question');
 };
+
+

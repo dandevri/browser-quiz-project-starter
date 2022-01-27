@@ -3,9 +3,10 @@
 import { initQuestionPage } from './pages/questionPage.js';
 import { initStartPage } from './pages/startPage.js';
 import { USER_INTERFACE_ID } from './constants.js';
+import { showResultPage } from './pages/resultPage.js';
 
+export const router = (page, totalScore) => {
 
-export const router = (page) => {
   const userInterfaceElement = document.getElementById(USER_INTERFACE_ID);
   userInterfaceElement.innerHTML = '';
 
@@ -16,5 +17,7 @@ export const router = (page) => {
     case 'question':
       initQuestionPage(userInterfaceElement);
       break;
+     case 'result':
+      showResultPage(userInterfaceElement, totalScore);
   }
 };
