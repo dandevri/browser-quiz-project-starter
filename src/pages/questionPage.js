@@ -60,27 +60,23 @@ export const initQuestionPage = (userInterface) => {
     answersListElement.style.pointerEvents = 'none';
   };
 
-  function showAnswers() {
-    return (e) => {
-      const answer = e.target.id;
-      givenAnswers[quizData.currentQuestionIndex] = answer;
-      if (answer === currentQuestion.correct) {
-        totalScore++;
-        e.target.style.backgroundColor = '#2fe82f';
-      } else {
-        e.target.style.backgroundColor = 'red';
-        document.getElementById(currentQuestion.correct).style.backgroundColor =
-          '#2fe82f';
-      }
-      const currentScore = createScoreElement(
-        totalScore,
-        quizData.questions.length
-      );
-      userInterface.appendChild(currentScore);
-    };
+  function selectAnswer(e) {
+    const answer = e.target.id;
+    givenAnswers[quizData.currentQuestionIndex] = answer;
+    if (answer === currentQuestion.correct) {
+      totalScore++;
+      e.target.style.backgroundColor = '#2FE82F';
+      answersListElement.style.pointerEvents = 'none';
+    } else {
+      e.target.style.backgroundColor = 'red';
+      answersListElement.style.pointerEvents = 'none';
+    }
+    const currentScore = createScoreElement(
+      totalScore,
+      quizData.questions.length
+    );
+    userInterface.appendChild(currentScore);
   }
-
- 
 
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
@@ -92,7 +88,15 @@ export const initQuestionPage = (userInterface) => {
 
   document
     .getElementById(ANSWERS_LIST_ID)
-    .addEventListener('click', showAnswers);
+    .addEventListener('click', selectAnswer);
+
+  const countDown = () => {
+    remainingTime--;
+    // if (timeLeft === 0) {
+    //   gameOver();
+    // }
+  };
+  setInterval(countDown, 1000);
 };
 
 const nextQuestion = () => {
@@ -102,15 +106,3 @@ const nextQuestion = () => {
     router('result', totalScore);
   } else router('question');
 };
-
-
-
-export const clock = () => {
-  const countDown = () => {
-    remainingTime--;
-    // if (timeLeft === 0) {
-    //   gameOver();
-    // }
-  };
-  setInterval(countDown, 1000);
-}
