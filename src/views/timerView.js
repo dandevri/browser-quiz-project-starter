@@ -9,9 +9,11 @@ import { TIMER_ID } from '../constants.js';
 
 export const createTimerElement = (remainingTime) => {
   let element;
+  const oldTimerElement = document.getElementById(TIMER_ID)
+  if (oldTimerElement) oldTimerElement.remove()
   element = document.createElement('div');
   element.id = TIMER_ID;
   element.classList.add('timer');
-  element.innerHTML = remainingTime--;
+  element.innerHTML = remainingTime;
   return element;
 };

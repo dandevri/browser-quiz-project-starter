@@ -21,8 +21,11 @@ export const initQuestionPage = (userInterface) => {
   );
   userInterface.appendChild(currentScore);
 
-  const timer = createTimerElement(remainingTime);
-  userInterface.appendChild(timer);
+  function timerDisplay() {
+    const timer = createTimerElement(remainingTime);
+    userInterface.appendChild(timer);
+  }
+  setInterval(timerDisplay, 1000);
 
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
 
@@ -89,14 +92,6 @@ export const initQuestionPage = (userInterface) => {
   document
     .getElementById(ANSWERS_LIST_ID)
     .addEventListener('click', selectAnswer);
-
-  const countDown = () => {
-    remainingTime--;
-    // if (timeLeft === 0) {
-    //   gameOver();
-    // }
-  };
-  setInterval(countDown, 1000);
 };
 
 const nextQuestion = () => {
@@ -105,4 +100,14 @@ const nextQuestion = () => {
   if (quizData.currentQuestionIndex === quizData.questions.length) {
     router('result', totalScore);
   } else router('question');
+};
+
+export const clock = () => {
+  const countDown = () => {
+    remainingTime--;
+    // if (timeLeft === 0) {
+    //   gameOver();
+    // }
+  };
+  setInterval(countDown, 1000);
 };
