@@ -40,7 +40,8 @@ export const initQuestionPage = (userInterface) => {
 
     const correctAnswer = answersListElement.querySelector(
       `li:nth-child(${answerNumber})`
-    );
+      );
+      //console.log(correctAnswer);
     correctAnswer.classList.add('correct');
   };
 
@@ -52,19 +53,38 @@ export const initQuestionPage = (userInterface) => {
     .getElementById(SHOW_CORRECT_ANSWER_BUTTON_ID)
     .addEventListener('click', showCorrectAnswer);
 
-  document.getElementById(ANSWERS_LIST_ID).addEventListener('click', (e) => {
-    const answer = e.target.id;
+  //   const selectAnswer = document.getElementById(ANSWERS_LIST_ID);
+  //   selectAnswer.addEventListener('click', (e) => {
+  //     const answer = e.target.id;
+  //     if (answer === currentQuestion.correct) {
+  //       e.target.style.backgroundColor = '#2fe82f';
+  //     } else {
+  //       e.target.style.backgroundColor = 'red';
+  //       // document.getElementById(currentQuestion.correct).style.backgroundColor =
+  //       //   '#2fe82f';
+  //     }
+  //     answersListElement.style.pointerEvents = 'none';
+  // });
+  function  selectAnswer (e){
+     const answer = e.target.id;
     if (answer === currentQuestion.correct) {
       e.target.style.backgroundColor = '#2fe82f';
     } else {
       e.target.style.backgroundColor = 'red';
-      document.getElementById(currentQuestion.correct).style.backgroundColor =
-        '#2fe82f';
+      // document.getElementById(currentQuestion.correct).style.backgroundColor =
+        // '#2fe82f';
     }
-  });
+    answersListElement.style.pointerEvents = 'none';
 
+  }
+  document
+  .getElementById(ANSWERS_LIST_ID)
+ //.getElementsByTagName("li")
+ .addEventListener('click', selectAnswer)
+
+
+ 
 };
-
 const nextQuestion = () => {
   quizData.currentQuestionIndex++;
 
