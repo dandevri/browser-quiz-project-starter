@@ -3,6 +3,7 @@
 import { ANSWERS_LIST_ID } from '../constants.js';
 import { NEXT_QUESTION_BUTTON_ID } from '../constants.js';
 import { SHOW_CORRECT_ANSWER_BUTTON_ID } from '../constants.js';
+import { TIMER_ID } from '../constants.js';
 import { getQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
@@ -20,7 +21,6 @@ export const initQuestionPage = (userInterface) => {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
   }
-
   let answerNumber;
   const showCorrectAnswer = () => {
     switch (currentQuestion.correct) {
@@ -42,7 +42,7 @@ export const initQuestionPage = (userInterface) => {
       `li:nth-child(${answerNumber})`
     );
     correctAnswer.classList.add('correct');
-    answersListElement.style.pointerEvents = 'none'; 
+    answersListElement.style.pointerEvents = 'none';
   };
 
   document
@@ -64,6 +64,21 @@ export const initQuestionPage = (userInterface) => {
     }
   });
 
+ 
+  clock();
+};
+
+const clock = () => {
+  const timer = document.getElementById(TIMER_ID);
+  let timeLeft = 100;
+  const countDown = () => {
+    timeLeft--;
+    timer.textContent = timeLeft;
+    // if (timeLeft === 0) {
+    //   gameOver();
+    // }
+  };
+  setInterval(countDown, 1000);
 };
 
 const nextQuestion = () => {
