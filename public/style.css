@@ -17,6 +17,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100px;
 }
 
 .scrollable {
@@ -25,9 +26,14 @@
   overflow: auto;
 }
 
+#timer {
+  margin: 0 0 0 0;
+  align-self: flex-end;
+}
+
 ul {
   list-style: none;
-  margin: 2rem 0 4rem 0;
+  margin: 2rem 0 2rem 0;
 }
 
 .correct {
@@ -52,7 +58,6 @@ li:hover {
   cursor: pointer;
   color: #3990bb;
 }
-
 .grid > div {
     display: grid;
     grid-template-columns: 1fr 1fr;

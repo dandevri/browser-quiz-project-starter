@@ -3,6 +3,7 @@
 import { ANSWERS_LIST_ID } from '../constants.js';
 import { NEXT_QUESTION_BUTTON_ID } from '../constants.js';
 import { SHOW_CORRECT_ANSWER_BUTTON_ID } from '../constants.js';
+import { TIMER_ID } from '../constants.js';
 import { getQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { createScoreElement } from '../views/scoreView.js';
@@ -12,7 +13,10 @@ import { router } from '../router.js';
 let totalScore = 0;
 
 export const initQuestionPage = (userInterface) => {
-  const currentScore = createScoreElement(totalScore, quizData.questions.length)
+  const currentScore = createScoreElement(
+    totalScore,
+    quizData.questions.length
+  );
   userInterface.appendChild(currentScore);
 
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
@@ -26,7 +30,6 @@ export const initQuestionPage = (userInterface) => {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
   }
-
   let answerNumber;
   const showCorrectAnswer = () => {
     switch (currentQuestion.correct) {
@@ -51,17 +54,6 @@ export const initQuestionPage = (userInterface) => {
     answersListElement.style.pointerEvents = 'none';
   };
 
-  document
-    .getElementById(NEXT_QUESTION_BUTTON_ID)
-    .addEventListener('click', nextQuestion);
-
-  document
-    .getElementById(SHOW_CORRECT_ANSWER_BUTTON_ID)
-    .addEventListener('click', showCorrectAnswer);
-
-  document.getElementById(ANSWERS_LIST_ID).addEventListener('click', showAnswers());
-
-
   function showAnswers() {
     return (e) => {
       const answer = e.target.id;
@@ -74,16 +66,32 @@ export const initQuestionPage = (userInterface) => {
         document.getElementById(currentQuestion.correct).style.backgroundColor =
           '#2fe82f';
       }
-      const currentScore = createScoreElement(totalScore, quizData.questions.length)
+      const currentScore = createScoreElement(
+        totalScore,
+        quizData.questions.length
+      );
       userInterface.appendChild(currentScore);
     };
   }
+
+  document
+    .getElementById(NEXT_QUESTION_BUTTON_ID)
+    .addEventListener('click', nextQuestion);
+
+  document
+    .getElementById(SHOW_CORRECT_ANSWER_BUTTON_ID)
+    .addEventListener('click', showCorrectAnswer);
+
+  document
+    .getElementById(ANSWERS_LIST_ID)
+    .addEventListener('click', showAnswers);
 };
 
 const nextQuestion = () => {
   quizData.currentQuestionIndex++;
   if (quizData.currentQuestionIndex === quizData.questions.length) {
     router('result', totalScore);
-  }
-  else router('question');
+  } else router('question');
 };
+
+
