@@ -7,10 +7,12 @@ import { TIMER_ID } from '../constants.js';
 import { getQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { createScoreElement } from '../views/scoreView.js';
+import { createTimerElement } from '../views/timerView.js';
 import { quizData, givenAnswers } from '../data.js';
 import { router } from '../router.js';
 
 let totalScore = 0;
+let remainingTime = 100;
 
 export const initQuestionPage = (userInterface) => {
   const currentScore = createScoreElement(
@@ -18,6 +20,9 @@ export const initQuestionPage = (userInterface) => {
     quizData.questions.length
   );
   userInterface.appendChild(currentScore);
+
+  const timer = createTimerElement(remainingTime);
+  userInterface.appendChild(timer);
 
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
 
@@ -30,6 +35,7 @@ export const initQuestionPage = (userInterface) => {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
   }
+
   let answerNumber;
   const showCorrectAnswer = () => {
     switch (currentQuestion.correct) {
@@ -74,6 +80,8 @@ export const initQuestionPage = (userInterface) => {
     };
   }
 
+ 
+
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .addEventListener('click', nextQuestion);
@@ -89,9 +97,20 @@ export const initQuestionPage = (userInterface) => {
 
 const nextQuestion = () => {
   quizData.currentQuestionIndex++;
+
   if (quizData.currentQuestionIndex === quizData.questions.length) {
     router('result', totalScore);
   } else router('question');
 };
 
 
+
+export const clock = () => {
+  const countDown = () => {
+    remainingTime--;
+    // if (timeLeft === 0) {
+    //   gameOver();
+    // }
+  };
+  setInterval(countDown, 1000);
+}
