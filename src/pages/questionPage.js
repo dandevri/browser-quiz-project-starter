@@ -68,7 +68,7 @@ export const initQuestionPage = (userInterface) => {
     givenAnswers[quizData.currentQuestionIndex] = answer;
     if (answer === currentQuestion.correct) {
       totalScore++;
-      e.target.style.backgroundColor = '#2FE82F';
+      e.target.style.backgroundColor = '#2fe82f';
       answersListElement.style.pointerEvents = 'none';
     } else {
       e.target.style.backgroundColor = 'red';
@@ -93,7 +93,6 @@ export const initQuestionPage = (userInterface) => {
     .getElementById(ANSWERS_LIST_ID)
     .addEventListener('click', selectAnswer);
 };
-
 const nextQuestion = () => {
   quizData.currentQuestionIndex++;
 
