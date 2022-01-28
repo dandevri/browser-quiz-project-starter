@@ -29,6 +29,7 @@ export const initQuestionPage = (userInterface) => {
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
+    
   }
   let answerNumber;
   const showCorrectAnswer = () => {
@@ -57,6 +58,7 @@ export const initQuestionPage = (userInterface) => {
   
   function selectAnswer (e) {
       const answer = e.target.id;
+     
       givenAnswers[quizData.currentQuestionIndex] = answer;
       if (answer === currentQuestion.correct) {
         totalScore++;
@@ -64,7 +66,7 @@ export const initQuestionPage = (userInterface) => {
         answersListElement.style.pointerEvents = 'none';
       } else {
         e.target.style.backgroundColor = 'red';
-        answersListElement.style.pointerEvents = 'none';
+       answersListElement.style.pointerEvents = 'none';
       }
       const currentScore = createScoreElement(
         totalScore,
