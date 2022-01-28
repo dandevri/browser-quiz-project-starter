@@ -12,7 +12,7 @@ import { quizData, givenAnswers } from '../data.js';
 import { router } from '../router.js';
 
 let totalScore = 0;
-let remainingTime = 100;
+let remainingTime = 5;
 
 export const initQuestionPage = (userInterface) => {
   const currentScore = createScoreElement(
@@ -25,7 +25,7 @@ export const initQuestionPage = (userInterface) => {
     const timer = createTimerElement(remainingTime);
     userInterface.appendChild(timer);
   }
-  setInterval(timerDisplay, 1000);
+  setInterval(timerDisplay, 500);
 
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
 
@@ -103,11 +103,18 @@ const nextQuestion = () => {
 };
 
 export const clock = () => {
+  const tickingSound = document.querySelector('#ticking-sound');
+  const bellRingSound = document.querySelector('#bell-ring-sound');
+  tickingSound.play();
   const countDown = () => {
     remainingTime--;
-    // if (timeLeft === 0) {
-    //   gameOver();
-    // }
+    if (remainingTime === 0) {
+      tickingSound.pause();
+      tickingSound.currentTime = 0;
+      bellRingSound.play();
+      clearInterval(animation);
+      router('result');
+    }
   };
-  setInterval(countDown, 1000);
+  let animation = setInterval(countDown, 1000);
 };
