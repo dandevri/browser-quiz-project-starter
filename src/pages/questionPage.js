@@ -3,7 +3,6 @@
 import { ANSWERS_LIST_ID } from '../constants.js';
 import { NEXT_QUESTION_BUTTON_ID } from '../constants.js';
 import { SHOW_CORRECT_ANSWER_BUTTON_ID } from '../constants.js';
-import { TIMER_ID } from '../constants.js';
 import { getQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { createScoreElement } from '../views/scoreView.js';
@@ -12,7 +11,7 @@ import { quizData, givenAnswers } from '../data.js';
 import { router } from '../router.js';
 
 let totalScore = 0;
-let remainingTime = 5;
+let remainingTime = 60;
 
 export const initQuestionPage = (userInterface) => {
   const currentScore = createScoreElement(
