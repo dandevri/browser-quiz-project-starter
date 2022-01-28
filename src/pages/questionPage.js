@@ -36,6 +36,7 @@ export const initQuestionPage = (userInterface) => {
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
+    
   }
 
   let answerNumber;
@@ -64,6 +65,7 @@ export const initQuestionPage = (userInterface) => {
 
 
 
+
   function selectAnswer(e) {
     const answer = e.target.id;
     givenAnswers[quizData.currentQuestionIndex] = currentQuestion.answers[answer];
@@ -83,6 +85,7 @@ export const initQuestionPage = (userInterface) => {
     userInterface.appendChild(currentScore);
 
   };
+
 
 
   document
