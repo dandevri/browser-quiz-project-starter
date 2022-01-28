@@ -206,10 +206,12 @@ export const quizData = {
       ],
     },
     {
-      text: 'Is JavaScript a case-sensitive language?',
+      text: 'Inside which HTML element do we put the JavaScript?',
       answers: {
-        a: 'true',
-        b: 'false'
+        a: '<scripting>',
+        b: '<javascript>',
+        c: '<js>',
+        d: '<script>'
       },
       correct: 'a',
       selected: null,

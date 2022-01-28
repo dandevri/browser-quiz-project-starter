@@ -49,30 +49,30 @@ export const initQuestionPage = (userInterface) => {
 
     const correctAnswer = answersListElement.querySelector(
       `li:nth-child(${answerNumber})`
-      );
+    );
     correctAnswer.classList.add('correct');
     answersListElement.style.pointerEvents = 'none';
   };
 
-  
-  function selectAnswer (e) {
-      const answer = e.target.id;
-      givenAnswers[quizData.currentQuestionIndex] = answer;
-      if (answer === currentQuestion.correct) {
-        totalScore++;
-        e.target.style.backgroundColor = '#2fe82f';
-        answersListElement.style.pointerEvents = 'none';
-      } else {
-        e.target.style.backgroundColor = 'red';
-        answersListElement.style.pointerEvents = 'none';
-      }
-      const currentScore = createScoreElement(
-        totalScore,
-        quizData.questions.length
-      );
-      userInterface.appendChild(currentScore);
-    };
-  
+
+  function selectAnswer(e) {
+    const answer = e.target.id;
+    givenAnswers[quizData.currentQuestionIndex] = currentQuestion.answers[answer];
+    if (answer === currentQuestion.correct) {
+      totalScore++;
+      e.target.style.backgroundColor = '#2fe82f';
+      answersListElement.style.pointerEvents = 'none';
+    } else {
+      e.target.style.backgroundColor = 'red';
+      answersListElement.style.pointerEvents = 'none';
+    }
+    const currentScore = createScoreElement(
+      totalScore,
+      quizData.questions.length
+    );
+    userInterface.appendChild(currentScore);
+  };
+
 
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
@@ -83,7 +83,7 @@ export const initQuestionPage = (userInterface) => {
     .addEventListener('click', showCorrectAnswer);
 
 
-  
+
   document
     .getElementById(ANSWERS_LIST_ID)
     .addEventListener('click', selectAnswer);

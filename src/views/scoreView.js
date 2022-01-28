@@ -6,7 +6,7 @@
  */
 export const createScoreElement = (currentScore, totalQuestionNumber) => {
   const oldScoreElement = document.getElementById('currentScore')
-  if (oldScoreElement) oldScoreElement.remove()
+  if (oldScoreElement) oldScoreElement.innerHTML = " "
   const element = document.createElement('div');
   element.id = 'currentScore'
   element.classList.add("score");
