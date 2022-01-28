@@ -17,7 +17,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100px;
 }
 
 .scrollable {
@@ -26,9 +25,10 @@
   overflow: auto;
 }
 
-#timer {
-  margin: 0 0 0 0;
-  align-self: flex-end;
+.timer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
 }
 
 ul {
@@ -69,5 +69,5 @@ li:hover {
 .score {
   position: fixed;
   top: 20px;
-  right: 20px;
+  left: 20px;
 }
