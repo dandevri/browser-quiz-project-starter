@@ -62,9 +62,12 @@ export const initQuestionPage = (userInterface) => {
     answersListElement.style.pointerEvents = 'none';
   };
 
+
+
   function selectAnswer(e) {
     const answer = e.target.id;
-    givenAnswers[quizData.currentQuestionIndex] = answer;
+    givenAnswers[quizData.currentQuestionIndex] = currentQuestion.answers[answer];
+
     if (answer === currentQuestion.correct) {
       totalScore++;
       e.target.style.backgroundColor = '#2fe82f';
@@ -78,7 +81,9 @@ export const initQuestionPage = (userInterface) => {
       quizData.questions.length
     );
     userInterface.appendChild(currentScore);
-  }
+
+  };
+
 
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
