@@ -88,8 +88,6 @@ export const initQuestionPage = (userInterface) => {
 
   };
 
-
-
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
     .addEventListener('click', nextQuestion);
