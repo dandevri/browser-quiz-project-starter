@@ -33,12 +33,10 @@ export const initQuestionPage = (userInterface) => {
 
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
-  const answerElements = document.getElementById(ANSWERS_LIST_ID).children;
-
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
-    
+
   }
 
   let answerNumber;
@@ -69,25 +67,24 @@ export const initQuestionPage = (userInterface) => {
 
 
   function selectAnswer(e) {
-    const answer = e.target.id;
-    givenAnswers[quizData.currentQuestionIndex] = currentQuestion.answers[answer];
-
-    if (answer === currentQuestion.correct) {
-      totalScore++;
-      e.target.style.backgroundColor = '#2fe82f';
-      answersListElement.style.pointerEvents = 'none';
-    } else {
-      e.target.style.backgroundColor = 'red';
-      answersListElement.style.pointerEvents = 'none';
+    if (e.target.tagName === "LI") {
+      const answer = e.target.id;
+      givenAnswers[quizData.currentQuestionIndex] = currentQuestion.answers[answer];
+      if (answer === currentQuestion.correct) {
+        totalScore++;
+        e.target.style.backgroundColor = '#2fe82f';
+        answersListElement.style.pointerEvents = 'none';
+      } else {
+        e.target.style.backgroundColor = 'red';
+        answersListElement.style.pointerEvents = 'none';
+      }
+      const currentScore = createScoreElement(
+        totalScore,
+        quizData.questions.length
+      );
+      userInterface.appendChild(currentScore);
     }
-    const currentScore = createScoreElement(
-      totalScore,
-      quizData.questions.length
-    );
-    userInterface.appendChild(currentScore);
-
   };
-
 
 
   document
@@ -98,9 +95,10 @@ export const initQuestionPage = (userInterface) => {
     .getElementById(SHOW_CORRECT_ANSWER_BUTTON_ID)
     .addEventListener('click', showCorrectAnswer);
 
-  [...answerElements].forEach((answerElement) =>
-    answerElement.addEventListener('click', selectAnswer)
-  );
+  document
+    .getElementById(ANSWERS_LIST_ID)
+    .addEventListener('click', selectAnswer)
+
 };
 const nextQuestion = () => {
   quizData.currentQuestionIndex++;

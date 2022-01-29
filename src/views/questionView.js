@@ -10,7 +10,7 @@ import { SHOW_CORRECT_ANSWER_BUTTON_ID } from '../constants.js';
  */
 export const getQuestionElement = (question) => {
   const element = document.createElement('div');
-
+element.classList.add('question-background')
   // I use String.raw just to get fancy colors for the HTML in VS Code.
   element.innerHTML = String.raw`
     <h1>${question}</h1>
