@@ -11,7 +11,7 @@ export const createTimerElement = (remainingTime) => {
   let element;
   const oldTimerElement = document.getElementById(TIMER_ID);
   if (oldTimerElement) oldTimerElement.remove();
-  element = document.createElement('div');
+  element = document.createElement('span');
   element.id = TIMER_ID;
   element.classList.add('timer');
   if (remainingTime === 0) {

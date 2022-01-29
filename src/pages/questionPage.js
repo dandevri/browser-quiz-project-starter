@@ -33,6 +33,8 @@ export const initQuestionPage = (userInterface) => {
 
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
+  const answerElements = document.getElementById(ANSWERS_LIST_ID).children;
+
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
@@ -96,9 +98,9 @@ export const initQuestionPage = (userInterface) => {
     .getElementById(SHOW_CORRECT_ANSWER_BUTTON_ID)
     .addEventListener('click', showCorrectAnswer);
 
-  document
-    .getElementById(ANSWERS_LIST_ID)
-    .addEventListener('click', selectAnswer);
+  [...answerElements].forEach((answerElement) =>
+    answerElement.addEventListener('click', selectAnswer)
+  );
 };
 const nextQuestion = () => {
   quizData.currentQuestionIndex++;
@@ -114,7 +116,10 @@ export const clock = () => {
   tickingSound.play();
   const countDown = () => {
     remainingTime--;
-    if (remainingTime === 0) {
+    if (
+      quizData.currentQuestionIndex === quizData.questions.length ||
+      remainingTime === 0
+    ) {
       tickingSound.pause();
       tickingSound.currentTime = 0;
       bellRingSound.play();
@@ -122,5 +127,5 @@ export const clock = () => {
       router('result');
     }
   };
-  let animation = setInterval(countDown, 1000);
+  const animation = setInterval(countDown, 1000);
 };
