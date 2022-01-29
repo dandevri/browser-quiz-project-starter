@@ -14,18 +14,6 @@ let totalScore = 0;
 let remainingTime = 60;
 
 export const initQuestionPage = (userInterface) => {
-  const currentScore = createScoreElement(
-    totalScore,
-    quizData.questions.length
-  );
-  userInterface.appendChild(currentScore);
-
-  function timerDisplay() {
-    const timer = createTimerElement(remainingTime);
-    userInterface.appendChild(timer);
-  }
-  setInterval(timerDisplay, 500);
-
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
 
   const questionElement = getQuestionElement(currentQuestion.text);
@@ -37,6 +25,24 @@ export const initQuestionPage = (userInterface) => {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
   }
+
+  const currentScore = createScoreElement(
+    totalScore,
+    quizData.questions.length
+  );
+  userInterface.appendChild(currentScore);
+
+  function displayTimer() {
+    const timer = createTimerElement(remainingTime);
+    userInterface.appendChild(timer);
+    if (
+      quizData.currentQuestionIndex === quizData.questions.length ||
+      remainingTime === 0
+    ) {
+      clearInterval(renewTimerDisplay);
+    }
+  }
+  const renewTimerDisplay = setInterval(displayTimer, 500);
 
   let answerNumber;
   const showCorrectAnswer = () => {
@@ -95,6 +101,7 @@ export const initQuestionPage = (userInterface) => {
     .getElementById(ANSWERS_LIST_ID)
     .addEventListener('click', selectAnswer);
 };
+
 const nextQuestion = () => {
   quizData.currentQuestionIndex++;
 
@@ -107,6 +114,7 @@ export const clock = () => {
   const tickingSound = document.querySelector('#ticking-sound');
   const bellRingSound = document.querySelector('#bell-ring-sound');
   tickingSound.play();
+
   const countDown = () => {
     remainingTime--;
     if (
@@ -116,9 +124,9 @@ export const clock = () => {
       tickingSound.pause();
       tickingSound.currentTime = 0;
       bellRingSound.play();
-      clearInterval(animation);
-      router('result');
+      clearInterval(countdownAnimation);
+      router('result', totalScore);
     }
   };
-  const animation = setInterval(countDown, 1000);
+  const countdownAnimation = setInterval(countDown, 1000);
 };
