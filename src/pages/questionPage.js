@@ -11,7 +11,7 @@ import { quizData, givenAnswers } from '../data.js';
 import { router } from '../router.js';
 
 let totalScore = 0;
-let remainingTime = 5;
+let remainingTime = 60;
 
 export const initQuestionPage = (userInterface) => {
   const currentScore = createScoreElement(
@@ -33,14 +33,12 @@ export const initQuestionPage = (userInterface) => {
 
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
 
-  const answerElements = document.getElementById(ANSWERS_LIST_ID).children;
-
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
 
   }
- 
+
   let answerNumber;
   const showCorrectAnswer = () => {
     switch (currentQuestion.correct) {
@@ -97,9 +95,10 @@ export const initQuestionPage = (userInterface) => {
     .getElementById(SHOW_CORRECT_ANSWER_BUTTON_ID)
     .addEventListener('click', showCorrectAnswer);
 
-  [...answerElements].forEach((answerElement) =>
-    answerElement.addEventListener('click', selectAnswer)
-  );
+  document
+    .getElementById(ANSWERS_LIST_ID)
+    .addEventListener('click', selectAnswer)
+
 };
 const nextQuestion = () => {
   quizData.currentQuestionIndex++;
