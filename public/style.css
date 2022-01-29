@@ -27,7 +27,7 @@
 
 .timer {
   position: fixed;
-  top: 20px;
+  top: 5px;
   right: 20px;
   border: 3px solid white;
   padding: 5px 10px;
@@ -51,6 +51,7 @@ ul {
   padding: 6px 16px;
   min-width: 10rem;
 }
+
 
 li {
   border: 1px solid;
@@ -92,10 +93,14 @@ li:hover {
     color: white;
     font-size: 1.3rem;
     position: absolute;
-    /* top: 88%; */
     border-radius: 10px;
-    box-shadow: 0 0 15px #fd56f5;
     bottom: 10%;
+    box-shadow: 0 0 20px #fd56f5;
+
+  }
+  #start-game-button:hover {
+  box-shadow: 0 0 50px #fd56f5;
+
 }
 .question-background{
   padding: 50px;
@@ -113,12 +118,19 @@ li:hover {
     background: rgb(8, 8, 8);
     color: white;
     font-size: 1.3rem;
-    /* position: absolute; */
-    /* top: 88%; */
+    
     border-radius: 10px;
     box-shadow: 0 0 8px #7373e0;
     margin-bottom: 10px;
-    /* bottom: 10%; */
+    
+    
+}
+#next-question-button:hover{
+  box-shadow: 0 0 50px #7373e0;
+}
+
+#show-correct-answer-button:hover{
+  box-shadow: 0 0 50px #7373e0;
 }
 .item-result{
   width: 100%;
