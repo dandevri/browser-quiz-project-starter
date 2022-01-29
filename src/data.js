@@ -86,10 +86,10 @@ export const quizData = {
       text:
         'Which of the following is the correct syntax to print a page using JavaScript?',
       answers: {
-        a: 'window.print();',
-        b: 'browser.print();',
-        c: 'navigator.print();',
-        d: 'document.print();',
+        a: 'window.print()',
+        b: 'browser.print()',
+        c: 'navigator.print()',
+        d: 'document.print()',
       },
       correct: 'a',
       selected: null,
@@ -110,9 +110,9 @@ export const quizData = {
         'Which built-in method returns the index within the calling String object of the first occurrence of the specified value?',
       answers: {
         a: 'getIndex()',
-        b: 'location();',
-        c: 'indexOf();',
-        d: 'None of the above();',
+        b: 'location()',
+        c: 'indexOf()',
+        d: 'None of the above()',
       },
       correct: 'c',
       selected: null,
@@ -134,7 +134,7 @@ export const quizData = {
       answers: {
         a: 'toExponential()',
         b: 'toFixed()',
-        c: 'toPrecision();',
+        c: 'toPrecision()',
         d: 'toLocaleString()',
       },
       correct: 'b',
@@ -223,10 +223,10 @@ export const quizData = {
     {
       text: 'Inside which HTML element do we put the JavaScript?',
       answers: {
-        a: '<scripting>',
-        b: '<javascript>',
-        c: '<js>',
-        d: '<script>'
+        a: 'scripting',
+        b: 'javascript',
+        c: 'js',
+        d: 'script',
       },
       correct: 'a',
       selected: null,
