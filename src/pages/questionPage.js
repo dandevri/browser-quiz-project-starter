@@ -11,15 +11,9 @@ import { quizData, givenAnswers } from '../data.js';
 import { router } from '../router.js';
 
 let totalScore = 0;
-let remainingTime = 10;
+let remainingTime = 60;
 
 export const initQuestionPage = (userInterface) => {
-  const currentScore = createScoreElement(
-    totalScore,
-    quizData.questions.length
-  );
-  userInterface.appendChild(currentScore);
-
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
 
   const questionElement = getQuestionElement(currentQuestion.text);
@@ -31,6 +25,12 @@ export const initQuestionPage = (userInterface) => {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
   }
+
+  const currentScore = createScoreElement(
+    totalScore,
+    quizData.questions.length
+  );
+  userInterface.appendChild(currentScore);
 
   function displayTimer() {
     const timer = createTimerElement(remainingTime);
