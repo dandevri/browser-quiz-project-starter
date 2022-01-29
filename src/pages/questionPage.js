@@ -36,7 +36,6 @@ export const initQuestionPage = (userInterface) => {
   for (const [key, answerText] of Object.entries(currentQuestion.answers)) {
     const answerElement = createAnswerElement(key, answerText);
     answersListElement.appendChild(answerElement);
-
   }
 
   let answerNumber;
@@ -63,13 +62,11 @@ export const initQuestionPage = (userInterface) => {
     answersListElement.style.pointerEvents = 'none';
   };
 
-
-
-
   function selectAnswer(e) {
-    if (e.target.tagName === "LI") {
+    if (e.target.tagName === 'LI') {
       const answer = e.target.id;
-      givenAnswers[quizData.currentQuestionIndex] = currentQuestion.answers[answer];
+      givenAnswers[quizData.currentQuestionIndex] =
+        currentQuestion.answers[answer];
       if (answer === currentQuestion.correct) {
         totalScore++;
         e.target.style.backgroundColor = '#2fe82f';
@@ -84,8 +81,7 @@ export const initQuestionPage = (userInterface) => {
       );
       userInterface.appendChild(currentScore);
     }
-  };
-
+  }
 
   document
     .getElementById(NEXT_QUESTION_BUTTON_ID)
@@ -97,8 +93,7 @@ export const initQuestionPage = (userInterface) => {
 
   document
     .getElementById(ANSWERS_LIST_ID)
-    .addEventListener('click', selectAnswer)
-
+    .addEventListener('click', selectAnswer);
 };
 const nextQuestion = () => {
   quizData.currentQuestionIndex++;
