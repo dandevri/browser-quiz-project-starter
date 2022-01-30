@@ -5,8 +5,8 @@ export const createTotalScoreElement = (quizData, totalScore = 0) => {
         isSuccess = false;
     }
     const scoreElement = document.createElement('h1');
-    scoreElement.style.color = "wheat";
-    scoreElement.innerHTML = `Your SCORE is ${totalScore}. You ${isSuccess ? 'Passed' : 'Failed'}`;
+    scoreElement.classList.add('title');
+    scoreElement.innerHTML = `Your SCORE is ${totalScore}. You ${isSuccess ? 'Passed' : 'Failed'}!`;
     return scoreElement;
 }
 
@@ -14,10 +14,10 @@ export const createAnswersContainer = (quizData, givenAnswers) => {
     const resultContainerElement = document.createElement('div');
     let counter = 0;
     quizData.questions.forEach((question) => {
-        
+
         const answersContainerElement = document.createElement('div');
         answersContainerElement.classList.add("item-result");
-       
+
         const questionTextElement = document.createElement('p');
         questionTextElement.innerHTML = `${counter + 1}. ${question.text}`
 
