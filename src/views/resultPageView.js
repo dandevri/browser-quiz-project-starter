@@ -32,7 +32,7 @@ export const createAnswersContainer = (quizData, givenAnswers) => {
     }`;
 
     const questionLinkElement = document.createElement('p');
-    questionLinkElement.innerHTML = String.raw`<a href="${question.links[0].href}">Learn More</a>`;
+    questionLinkElement.innerHTML = `<a href="${question.links[0].href}">Learn More</a>`;
 
     answersContainerElement.appendChild(questionTextElement);
     answersContainerElement.appendChild(questionCorrectAnswerElement);

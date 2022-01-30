@@ -28,5 +28,24 @@ At the end of the quiz, you will see the result page. On the upper left corner y
  4. Push to the Branch (git push origin feature/AmazingFeature)
  5. Open a Pull Request
 
+ ## Must-Haves
+ <ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can see one question at a time, stepping through the quiz</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can select an answer for each question</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can know which questions they got correct and incorrect (either immediately or at the end of the quiz)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can see the correct answer for questions (either immediately or at the end of the quiz)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can see their score at the end of the quiz</li>
+</ul>
+
+## Nice-to-Haves
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can see their score update in real-time as they select answers</li>
+
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can "cheat" to see the correct answer, this forfeits the question</li>
+
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can learn the about the correct answer and look into resources (if your quiz is more educational)</li>
+
+
+</ul>
  ## Quiz App Demo
  <img src="./img/Animation.gif" style="max-width: 100%;">
