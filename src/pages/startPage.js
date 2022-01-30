@@ -20,6 +20,6 @@ export const initStartPage = (userInterface) => {
   function startGame() {
     router('question');
     userInterface.classList.remove('background')  
-    userInterface.style.backgroundImage =`url("../../img/KIQuiz.webp")`;
+    userInterface.style.backgroundImage =`url("./img/KIQuiz.webp")`;
 }
 };
