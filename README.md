@@ -1,69 +1,61 @@
-# Getting Started
+# Quiz-App-Javascript
 
-This repository functions as the basis of the quiz project in the [Browsers module](https://github.com/HackYourFuture/Browsers). Before the first group meeting, have a look through this code and try to understand how it works and how it is organised. We will explain the idea behind the structure below as well as the Backlog (which will identify what is needed to be implemented).
+## Project Overview
 
-We have already implemented a very basic UI that can go through the questions to show you how this kind of code is split and how you can use the structure to your advantage. Have a look through it before your first group meeting as it can take a little while to get your head around it!
+Quiz App was created for front-end newbies to improve their JS knowledge by practicing.  
+It is easy to use. To start to quiz-app, you only click on the start button. Then select an option that you think correct.  
+If you don't know the answer, you can use the show answer button.  
+At the end of the quiz, you will see the result page. On the upper left corner you will see you score, and ont he upper right corner you will see the timer.
 
-## Development
+## Built With
 
-To run this project locally you will need to open `index.html` in your browser using a local server. LiveServer, `http-server`, `study-lenses`, or any other local static server will work.
+---
 
-## Installing Dependencies
+<p dir="auto">
+  <a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/0c3a16a22ae058cfe38a06dc9ea16404cf006409262f547c9ccfa3ec8b30f71e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d48544d4c352d4533344632363f7374796c653d666c61742d737175617265266c6f676f3d68746d6c35266c6f676f436f6c6f723d7768697465"><img alt="html5" src="https://camo.githubusercontent.com/0c3a16a22ae058cfe38a06dc9ea16404cf006409262f547c9ccfa3ec8b30f71e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d48544d4c352d4533344632363f7374796c653d666c61742d737175617265266c6f676f3d68746d6c35266c6f676f436f6c6f723d7768697465" data-canonical-src="https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&amp;logo=html5&amp;logoColor=white" style="max-width: 100%;"></a>
+  <a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/af676aa114d3e054bb2d7b823f8b1dbf1814214d2c6f49e6a6cb70ab1837bd59/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4353532d3066363166613f7374796c653d666c61742d737175617265266c6f676f3d43535333266c6f676f436f6c6f723d7768697465"><img alt="CSS" src="https://camo.githubusercontent.com/af676aa114d3e054bb2d7b823f8b1dbf1814214d2c6f49e6a6cb70ab1837bd59/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4353532d3066363166613f7374796c653d666c61742d737175617265266c6f676f3d43535333266c6f676f436f6c6f723d7768697465" data-canonical-src="https://img.shields.io/badge/-CSS-0f61fa?style=flat-square&amp;logo=CSS3&amp;logoColor=white" style="max-width: 100%;"></a>
+  <a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/1c4e4cd646ae3703d4a774f42acf2ef62f44f811b28d9a1170e09e65ebad2315/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4a6176615363726970742d6666626130383f7374796c653d666c61742d737175617265266c6f676f3d4a617661536372697074266c6f676f436f6c6f723d626c61636b"><img alt="JS" src="https://camo.githubusercontent.com/1c4e4cd646ae3703d4a774f42acf2ef62f44f811b28d9a1170e09e65ebad2315/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4a6176615363726970742d6666626130383f7374796c653d666c61742d737175617265266c6f676f3d4a617661536372697074266c6f676f436f6c6f723d626c61636b" data-canonical-src="https://img.shields.io/badge/-JavaScript-ffba08?style=flat-square&amp;logo=JavaScript&amp;logoColor=black" style="max-width: 100%;"></a>
+ </p>
 
-There are no dependencies needed to run the website, everything is prepared to work with vanilla JavaScript. However, if you want to install prettier for this project then run (generally you always want to do this if you see a `package.json` file):
+## Installation Instructions
 
-- `npm install`
+1.  Clone the repository
+2.  Open your code editor
+3.  Go to index.html file and open it with live LiveServer
 
-# Structure
+## Contributing
 
-Let's run through the folders:
+Contributions are very welcome. If you have any suggestion to make it better, you are kindly requested to fork repo and create a pull request.
 
-```
-public
-src
-└── pages
-└── views
-└── app.js
-└── constants.js
-└── data.js
-└── router.js
-index.html
-```
-
-- `public` this contains the static files that can be used by our `index.html` file
-- `src` this contains all of our JavaScript code
- - `pages` this folder contains our functions that handle user interactions. You can also see it as the code that processes and updates the data or DOM
-  it also contains our code that links up our handler code to the DOM.
- - `views` this contains code to define what the DOM will look like. They will create the DOM element and give it back. They should never read from/write to the dom, that is what the pages do.
-- `app.js` this file our initialisation code. Generally this code should only run once and starts the application
-- `data.js` this is our data model. Anything we need to store in the browser we place inside the data file
-- `router.js` this file will transition the app from one page to the other and clear the HTML.
-
-# Backlog
-
-So what should be built? Below is a collection of user stories you can choose from. Stories inside of each priority level are not necessarily in order, it's up to your group to decide how they fit into your strategy. These are also just suggestion, feel free to change them or create your own! Feel free to get creative.
+1.  Fork the Project
+2.  Create your Feature Branch (git checkout -b feature/AmazingFeature)
+3.  Commit your Changes (git commit -m 'Add some AmazingFeature')
+4.  Push to the Branch (git push origin feature/AmazingFeature)
+5.  Open a Pull Request
 
 ## Must-Haves
 
-> these are necessary for basic usability
-
-- [x] A user can see one question at a time, stepping through the quiz
-- [ ] A user can select an answer for each question
-- [ ] A user can know which questions they got correct and incorrect (either immediately or at the end of the quiz)
-- [ ] A user can see the correct answer for questions (either immediately or at the end of the quiz)
-- [ ] A user can see their score at the end of the quiz
+ <ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can see one question at a time, stepping through the quiz</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can select an answer for each question</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can know which questions they got correct and incorrect (either immediately or at the end of the quiz)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can see the correct answer for questions (either immediately or at the end of the quiz)</li>
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can see their score at the end of the quiz</li>
+</ul>
 
 ## Nice-to-Haves
 
-> if time, add more features!
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can see their score update in real-time as they select answers</li>
 
-- [ ] A user can see their score update in real-time as they select answers
-- [ ] A user can refresh the page and still have his/her given answers available
-- [ ] A user has access to resources for further study on each question
-- [ ] A user can "cheat" to see the correct answer, this forfeits the question
-- [ ] A user can get more points for fast answers (if your quiz works like a test)
-- [ ] A user can learn the about the correct answer and look into resources (if your quiz is more educational)
-- [ ] Transition between pages or question look fancy like TypeForm for example
-- [ ] Anything else you can think of... go nuts!
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user has access to resources for further study on each question</li>
 
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can "cheat" to see the correct answer, this forfeits the question</li>
 
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can learn the about the correct answer and look into resources (if your quiz is more educational)</li>
+
+<li class="task-list-item"><input type="checkbox" id="" disabled="" class="task-list-item-checkbox" checked=""> A user can learn the about the correct answer and look into resources (if your quiz is more educational)</li>
+
+</ul>
+ ## Quiz App Demo
+ <img src="./img/Animation.gif" style="max-width: 100%;">

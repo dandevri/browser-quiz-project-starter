@@ -6,8 +6,9 @@
  */
 export const createAnswerElement = (key, answerText) => {
   const element = document.createElement('li');
+  element.id=key;
   element.innerHTML = String.raw`
-    ${key}: ${answerText};
+    ${key}: ${answerText}
   `;
   return element;
 };

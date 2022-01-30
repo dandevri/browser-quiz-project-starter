@@ -2,6 +2,7 @@
 
 import { ANSWERS_LIST_ID } from '../constants.js';
 import { NEXT_QUESTION_BUTTON_ID } from '../constants.js';
+import { SHOW_CORRECT_ANSWER_BUTTON_ID } from '../constants.js';
 
 /**
  * Create a full question element
@@ -9,16 +10,18 @@ import { NEXT_QUESTION_BUTTON_ID } from '../constants.js';
  */
 export const getQuestionElement = (question) => {
   const element = document.createElement('div');
-
+element.classList.add('question-background')
   // I use String.raw just to get fancy colors for the HTML in VS Code.
   element.innerHTML = String.raw`
     <h1>${question}</h1>
 
     <ul id="${ANSWERS_LIST_ID}"></ul>
 
-    <button id="${NEXT_QUESTION_BUTTON_ID}">
+    <button id="${NEXT_QUESTION_BUTTON_ID}" class="btn">
       Next question
     </button>
+
+    <button id="${SHOW_CORRECT_ANSWER_BUTTON_ID}" class="btn">Show the answer</button>
   `;
 
   return element;
